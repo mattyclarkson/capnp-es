@@ -1,0 +1,40 @@
+{
+  "name": "capnp-es",
+  "version": "0.0.0",
+  "description": "ECMAscript module generator plugin for Cap'n Proto",
+  "main": "./dist/lib/capnp-es.js",
+  "module": "./lib/capnp-es.js",
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "bin": {
+    "capnpc-es": "./dist/bin/capnpc-es.js"
+  },
+  "bugs": {
+    "url": "https://github.com/mattyclarkson/capnp-es/issues"
+  },
+  "keywords": [
+    "capnp",
+    "rpc",
+    "javascript",
+    "ecmascript"
+  ],
+  "homepage": "https://github.com/mattyclarkson/capnp-es#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mattyclarkson/capnp-es.git"
+  },
+  "author": "Matt Clarkson <mattyclarkson@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "rollup": "^0.49.3"
+  },
+  "scripts": {
+    "rollup-binary": "rollup -c rollup.binary.config.js",
+    "rollup-library": "rollup -c rollup.library.config.js",
+    "rollup": "yarn run rollup-binary && yarn run rollup-library",
+    "build": "yarn run rollup",
+    "prepare": "yarn run build"
+  }
+}
