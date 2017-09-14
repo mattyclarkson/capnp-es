@@ -16,5 +16,6 @@ export default {
     format: 'cjs',
     banner: '#! /usr/bin/env node\n'
   },
-  plugins: [chmod({mode: '755'})]
+  plugins: [chmod({mode: '755'})],
+  external: ['command-line-args']
 };

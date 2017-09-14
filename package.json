@@ -27,20 +27,24 @@
   },
   "author": "Matt Clarkson <mattyclarkson@gmail.com>",
   "license": "MIT",
+  "dependencies": {
+    "command-line-args": "^4.0.7"
+  },
   "devDependencies": {
     "documentation": "^5.3.1",
     "eslint": "^4.6.1",
     "rollup": "^0.49.3"
   },
   "scripts": {
+    "clean": "git clean -xfd",
     "rollup-binary": "rollup -c rollup.binary.config.js",
     "rollup-library": "rollup -c rollup.library.config.js",
-    "rollup": "yarn run rollup-binary && yarn run rollup-library",
-    "build": "yarn run lint && yarn run rollup",
+    "rollup": "yarn rollup-binary && yarn rollup-library",
+    "build": "yarn lint && yarn rollup",
     "docs": "documentation serve lib/capnp-es.js",
     "docslint": "documentation lint lib/capnp-es.js",
-    "eslint": "eslint lib test",
-    "lint": "yarn run eslint && yarn run docslint",
-    "prepare": "yarn run rollup"
+    "eslint": "eslint bin lib test",
+    "lint": "yarn eslint && yarn docslint",
+    "prepare": "yarn rollup"
   }
 }
