@@ -4,6 +4,8 @@
 
 **This project is work in progress**
 
+[![Build Status][travis-badge]][travis]
+
 ## Development
 
 Make sure that you have an [installation][capnp-installation] of Cap'n Proto in your shell path. Use `yarn` to build
@@ -17,3 +19,5 @@ yarn test
 
 [capnp]: https://capnproto.org
 [capnp-installation]: https://capnproto.org/install.html
+[travis]: https://travis-ci.org/mattyclarkson/capnp-es
+[travis-badge]: https://travis-ci.org/mattyclarkson/capnp-es.svg?branch=master
