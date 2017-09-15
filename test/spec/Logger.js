@@ -25,9 +25,9 @@ class Console {
 
 describe('Logger', () => {
   beforeEach(function() {
-    const logger = new Console();
-    this.logger = new Logger({logger});
-    this.logger.logger.should.equal(logger);
+    const console = new Console();
+    this.logger = new Logger({console});
+    this.logger.console.should.equal(console);
   });
 
   describe('levels', () => {
@@ -39,25 +39,25 @@ describe('Logger', () => {
       it('should not honour the ERROR logging level', function() {
         const msg = 'test';
         this.logger.error(msg);
-        this.logger.logger.buffer.should.be.empty;
+        this.logger.console.buffer.should.be.empty;
       });
 
       it('should not honour the WARN logging level', function() {
         const msg = 'test';
         this.logger.warn(msg);
-        this.logger.logger.buffer.should.be.empty;
+        this.logger.console.buffer.should.be.empty;
       });
 
       it('should not honour the INFO logging level', function() {
         const msg = 'test';
         this.logger.info(msg);
-        this.logger.logger.buffer.should.be.empty;
+        this.logger.console.buffer.should.be.empty;
       });
 
       it('should not honour the DEBUG logging level', function() {
         const msg = 'test';
         this.logger.debug(msg);
-        this.logger.logger.buffer.should.be.empty;
+        this.logger.console.buffer.should.be.empty;
       });
     });
 
@@ -69,25 +69,25 @@ describe('Logger', () => {
       it('should honour the ERROR logging level', function() {
         const msg = 'test';
         this.logger.error(msg);
-        this.logger.logger.buffer.should.equal(`error: ${msg}`);
+        this.logger.console.buffer.should.equal(`error: ${msg}`);
       });
 
       it('should not honour the WARN logging level', function() {
         const msg = 'test';
         this.logger.warn(msg);
-        this.logger.logger.buffer.should.be.empty;
+        this.logger.console.buffer.should.be.empty;
       });
 
       it('should not honour the INFO logging level', function() {
         const msg = 'test';
         this.logger.info(msg);
-        this.logger.logger.buffer.should.be.empty;
+        this.logger.console.buffer.should.be.empty;
       });
 
       it('should not honour the DEBUG logging level', function() {
         const msg = 'test';
         this.logger.debug(msg);
-        this.logger.logger.buffer.should.be.empty;
+        this.logger.console.buffer.should.be.empty;
       });
     });
 
@@ -99,25 +99,25 @@ describe('Logger', () => {
       it('should honour the ERROR logging level', function() {
         const msg = 'test';
         this.logger.error(msg);
-        this.logger.logger.buffer.should.equal(`error: ${msg}`);
+        this.logger.console.buffer.should.equal(`error: ${msg}`);
       });
 
       it('should honour the WARN logging level', function() {
         const msg = 'test';
         this.logger.warn(msg);
-        this.logger.logger.buffer.should.equal(`warn: ${msg}`);
+        this.logger.console.buffer.should.equal(`warn: ${msg}`);
       });
 
       it('should not honour the INFO logging level', function() {
         const msg = 'test';
         this.logger.info(msg);
-        this.logger.logger.buffer.should.be.empty;
+        this.logger.console.buffer.should.be.empty;
       });
 
       it('should not honour the DEBUG logging level', function() {
         const msg = 'test';
         this.logger.debug(msg);
-        this.logger.logger.buffer.should.be.empty;
+        this.logger.console.buffer.should.be.empty;
       });
     });
 
@@ -129,25 +129,25 @@ describe('Logger', () => {
       it('should honour the ERROR logging level', function() {
         const msg = 'test';
         this.logger.error(msg);
-        this.logger.logger.buffer.should.equal(`error: ${msg}`);
+        this.logger.console.buffer.should.equal(`error: ${msg}`);
       });
 
       it('should honour the WARN logging level', function() {
         const msg = 'test';
         this.logger.warn(msg);
-        this.logger.logger.buffer.should.equal(`warn: ${msg}`);
+        this.logger.console.buffer.should.equal(`warn: ${msg}`);
       });
 
       it('should honour the INFO logging level', function() {
         const msg = 'test';
         this.logger.info(msg);
-        this.logger.logger.buffer.should.equal(`info: ${msg}`);
+        this.logger.console.buffer.should.equal(`info: ${msg}`);
       });
 
       it('should not honour the DEBUG logging level', function() {
         const msg = 'test';
         this.logger.debug(msg);
-        this.logger.logger.buffer.should.be.empty;
+        this.logger.console.buffer.should.be.empty;
       });
     });
 
@@ -159,25 +159,25 @@ describe('Logger', () => {
       it('should honour the ERROR logging level', function() {
         const msg = 'test';
         this.logger.error(msg);
-        this.logger.logger.buffer.should.equal(`error: ${msg}`);
+        this.logger.console.buffer.should.equal(`error: ${msg}`);
       });
 
       it('should honour the WARN logging level', function() {
         const msg = 'test';
         this.logger.warn(msg);
-        this.logger.logger.buffer.should.equal(`warn: ${msg}`);
+        this.logger.console.buffer.should.equal(`warn: ${msg}`);
       });
 
       it('should honour the INFO logging level', function() {
         const msg = 'test';
         this.logger.info(msg);
-        this.logger.logger.buffer.should.equal(`info: ${msg}`);
+        this.logger.console.buffer.should.equal(`info: ${msg}`);
       });
 
       it('should honour the DEBUG logging level', function() {
         const msg = 'test';
         this.logger.debug(msg);
-        this.logger.logger.buffer.should.equal(`debug: ${msg}`);
+        this.logger.console.buffer.should.equal(`debug: ${msg}`);
       });
     });
   });

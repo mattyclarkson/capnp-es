@@ -79,7 +79,7 @@ try {
     throw new OptionsError(`Unknown arguments: ${unparsed.join(', ')}`);
   }
 
-  const logger = new Logger({level: args.verbose ? INFO : WARN, logger: new Console()});
+  const logger = new Logger({level: args.verbose ? INFO : WARN, console: new Console()});
 
   const options = new Options({logger});
 
