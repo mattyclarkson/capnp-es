@@ -1,0 +1,24 @@
+environment:
+  matrix:
+    - nodejs_version: "Stable"
+    - nodejs_version: "LTS"
+
+cache:
+ - "%LOCALAPPDATA%\\Yarn"
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - node --version
+  - yarn --version
+  - yarn install
+
+before_build:
+  - yarn lint
+
+build_script:
+  - yarn build
+
+test_script:
+  - yarn test
+
+build: off
