@@ -14,11 +14,19 @@ function version(status=0) {
 }
 
 function help(status=0) {
-  process.stdout.write(`Usage: ${process.title} [options]
+  process.stdout.write(`Usage: ${process.title} [<option>...]
+
+This is a Cap'n Proto compiler plugin which generates ECMAscript modules. It
+is meant to be run using the Cap'n Proto compiler, e.g.:
+    capnp compile -oes foo.capnp
+
 Options:
-  --help                   Display this information.
-  --version                Output the script version.
-  --verbose                Increase logging output.
+    --verbose
+        Log informational messages to stderr; useful for debugging.
+    --version
+        Print version information and exit.
+    --help
+        Display this help text and exit.
 `);
   process.exit(status);
 }
