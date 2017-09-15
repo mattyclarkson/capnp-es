@@ -42,13 +42,13 @@
     "rollup-binary": "rollup -c rollup.binary.config.js",
     "rollup-library": "rollup -c rollup.library.config.js",
     "rollup": "yarn rollup-binary && yarn rollup-library",
-    "build": "yarn lint && yarn rollup",
     "docs": "documentation serve lib/capnp-es.js",
     "docslint": "documentation lint lib/capnp-es.js",
     "eslint": "eslint bin lib test",
     "mocha": "mocha",
     "nyc": "nyc mocha",
     "lint": "yarn eslint && yarn docslint",
+    "build": "yarn lint && yarn rollup",
     "test": "yarn nyc",
     "prepare": "yarn rollup"
   }
