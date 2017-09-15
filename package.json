@@ -31,6 +31,7 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "chai": "^4.1.2",
+    "coveralls": "^2.13.1",
     "documentation": "^5.3.1",
     "eslint": "^4.6.1",
     "mocha": "^3.5.3",
@@ -45,11 +46,11 @@
     "docs": "documentation serve lib/capnp-es.js",
     "docslint": "documentation lint lib/capnp-es.js",
     "eslint": "eslint bin lib test",
-    "mocha": "mocha",
-    "nyc": "nyc mocha",
+    "mocha": "nyc mocha",
     "lint": "yarn eslint && yarn docslint",
     "build": "yarn lint && yarn rollup",
-    "test": "yarn nyc",
+    "test": "yarn mocha",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "prepare": "yarn rollup"
   }
 }
