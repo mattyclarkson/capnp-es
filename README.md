@@ -16,6 +16,7 @@ and test the project:
 ```
 yarn install
 yarn lint
+yarn build
 yarn test
 ```
 
