@@ -27,9 +27,6 @@
   },
   "author": "Matt Clarkson <mattyclarkson@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "command-line-args": "^4.0.7"
-  },
   "devDependencies": {
     "documentation": "^5.3.1",
     "eslint": "^4.6.1",

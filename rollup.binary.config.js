@@ -17,5 +17,5 @@ export default {
     banner: '#! /usr/bin/env node\n'
   },
   plugins: [chmod({mode: '755'})],
-  external: ['command-line-args']
+  external: ['fs', 'path']
 };
