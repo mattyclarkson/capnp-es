@@ -48,7 +48,7 @@
     "eslint": "eslint bin lib test",
     "mocha": "nyc mocha",
     "lint": "yarn eslint && yarn docslint",
-    "build": "yarn lint && yarn rollup",
+    "build": "yarn rollup",
     "test": "yarn mocha",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "prepare": "yarn rollup"
