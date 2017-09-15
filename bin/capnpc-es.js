@@ -31,6 +31,38 @@ Options:
   process.exit(status);
 }
 
+class Console {
+  constructor() {
+    Object.defineProperties(this, {
+      stream: {value: process.stderr},
+      colours: {value: {
+        red: '\x1b[31m',
+        yellow: '\x1b[33m',
+        green: '\x1b[32m',
+        blue: '\x1b[34m',
+        black: '\x1b[30m',
+        reset: '\x1b[0m'
+      }}
+    });
+  }
+
+  debug(...args) {
+    this.stream.write(`${this.colours.blue}${args.join(' ')}${this.colours.reset}\n`);
+  }
+
+  info(...args) {
+    this.stream.write(`${this.colours.green}${args.join(' ')}${this.colours.reset}\n`);
+  }
+
+  warn(...args) {
+    this.stream.write(`${this.colours.yellow}${args.join(' ')}${this.colours.reset}\n`);
+  }
+
+  error(...args) {
+    this.stream.write(`${this.colours.red}${args.join(' ')}${this.colours.reset}\n`);
+  }
+}
+
 try {
   const args = {};
 
@@ -47,7 +79,7 @@ try {
     throw new OptionsError(`Unknown arguments: ${unparsed.join(', ')}`);
   }
 
-  const logger = new Logger({level: args.verbose ? INFO : WARN});
+  const logger = new Logger({level: args.verbose ? INFO : WARN, logger: new Console()});
 
   const options = new Options({logger});
 
