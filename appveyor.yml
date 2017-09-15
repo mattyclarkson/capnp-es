@@ -7,6 +7,8 @@ cache:
  - "%LOCALAPPDATA%\\Yarn"
 
 install:
+  - ps: $env:VERSION = (Get-Content -Raw -Path package.json | ConvertFrom-Json).version
+  - ps: Update-AppveyorBuild -Version "$env:VERSION-$env:APPVEYOR_BUILD_NUMBER"
   - ps: Install-Product node $env:nodejs_version
   - node --version
   - yarn --version
