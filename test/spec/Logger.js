@@ -1,4 +1,4 @@
-import {ERROR, WARN, INFO, DEBUG} from '../../lib/logger/level.js';
+import {NONE, ERROR, WARN, INFO, DEBUG} from '../../lib/logger/level.js';
 import Logger from '../../lib/Logger.js';
 
 class Console {
@@ -31,6 +31,36 @@ describe('Logger', () => {
   });
 
   describe('levels', () => {
+    describe('NONE', function() {
+      beforeEach(function() {
+        this.logger.level = NONE;
+      });
+
+      it('should not honour the ERROR logging level', function() {
+        const msg = 'test';
+        this.logger.error(msg);
+        this.logger.logger.buffer.should.be.empty;
+      });
+
+      it('should not honour the WARN logging level', function() {
+        const msg = 'test';
+        this.logger.warn(msg);
+        this.logger.logger.buffer.should.be.empty;
+      });
+
+      it('should not honour the INFO logging level', function() {
+        const msg = 'test';
+        this.logger.info(msg);
+        this.logger.logger.buffer.should.be.empty;
+      });
+
+      it('should not honour the DEBUG logging level', function() {
+        const msg = 'test';
+        this.logger.debug(msg);
+        this.logger.logger.buffer.should.be.empty;
+      });
+    });
+
     describe('ERROR', function() {
       beforeEach(function() {
         this.logger.level = ERROR;
