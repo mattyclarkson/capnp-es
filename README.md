@@ -6,6 +6,7 @@
 
 [![Travis CI status][travis-badge]][travis]
 [![Appveyor status][appveyor-badge]][appveyor]
+[![Coverage Status][coverage-badge]][coverage]
 
 ## Development
 
@@ -24,3 +25,5 @@ yarn test
 [travis-badge]: https://travis-ci.org/mattyclarkson/capnp-es.svg?branch=master
 [appveyor]: https://ci.appveyor.com/project/mattyclarkson/capnp-es/branch/master
 [appveyor-badge]: https://ci.appveyor.com/api/projects/status/4rq5l82it6mto8a6/branch/master?svg=true
+[coverage]: https://coveralls.io/github/mattyclarkson/capnp-es?branch=master
+[coverage-badge]: https://coveralls.io/repos/github/mattyclarkson/capnp-es/badge.svg?branch=master
