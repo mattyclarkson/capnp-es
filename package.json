@@ -41,7 +41,8 @@
     "rollup-plugin-babel": "^3.0.2"
   },
   "scripts": {
-    "clean": "git clean -xfd",
+    "distclean": "git clean -xfd",
+    "clean": "git clean -xfde node_modules",
     "rollup-binary": "rollup -c rollup.binary.config.js",
     "rollup-library": "rollup -c rollup.library.config.js",
     "rollup": "yarn rollup-binary && yarn rollup-library",
