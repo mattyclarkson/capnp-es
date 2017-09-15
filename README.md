@@ -4,7 +4,8 @@
 
 **This project is work in progress**
 
-[![Build Status][travis-badge]][travis]
+[![Travis CI status][travis-badge]][travis]
+[![Appveyor status][appveyor-badge]][appveyor]
 
 ## Development
 
@@ -21,3 +22,5 @@ yarn test
 [capnp-installation]: https://capnproto.org/install.html
 [travis]: https://travis-ci.org/mattyclarkson/capnp-es
 [travis-badge]: https://travis-ci.org/mattyclarkson/capnp-es.svg?branch=master
+[appveyor]: https://ci.appveyor.com/project/mattyclarkson/capnp-es/branch/master
+[appveyor-badge]: https://ci.appveyor.com/api/projects/status/4rq5l82it6mto8a6/branch/master?svg=true
