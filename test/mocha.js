@@ -1,5 +1,5 @@
 import chai from 'chai';
-import {URL} from 'url';
+import {URL} from 'whatwg-url';
 import babelRegister from 'babel-register';
 import fs from 'fs';
 import http from 'http';
