@@ -4,6 +4,8 @@ import {WARN, INFO} from '../lib/logger/level.js';
 import fs from 'fs';
 import path from 'path';
 
+class OptionsError extends Error {}
+
 const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', 'package.json'), {encoding: 'utf8'}));
 
 process.title = pkg.name;
@@ -94,6 +96,8 @@ stdin()
     const logger = new Logger({level: args.verbose ? INFO : WARN, console: new Console()});
 
     const ast = generate(buffer, logger);
+
+    logger.debug(ast);
 
     process.exit(0);
   })
