@@ -1,4 +1,4 @@
-import main, {Options, OptionsError} from '../lib/main.js';
+import generate from '../lib/generate.js';
 import Logger from '../lib/Logger.js';
 import {WARN, INFO} from '../lib/logger/level.js';
 import fs from 'fs';
@@ -93,9 +93,7 @@ stdin()
 
     const logger = new Logger({level: args.verbose ? INFO : WARN, console: new Console()});
 
-    const options = new Options({buffer, logger});
-
-    main(options);
+    const ast = generate(buffer, logger);
 
     process.exit(0);
   })

@@ -1,6 +1,6 @@
-import '../../lib/main.js';
+import '../../lib/generate.js';
 
-describe('main', () => {
+describe('generate', () => {
   before(function() {
     return fetchSchema('Id.capnp').catch(err => {
       if (err.response.status === 501) {
