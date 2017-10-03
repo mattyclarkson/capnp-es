@@ -5,7 +5,7 @@ import fs from 'fs';
 import http from 'http';
 import path from 'path';
 import fetch, {Headers, Request, Response} from 'node-fetch';
-import compile, {compiler} from '../lib/compile.js';
+import compile from '../lib/middleware/compile.js';
 import fetchSchema from './fetchSchema.js';
 
 const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json')));
@@ -28,35 +28,10 @@ global.location = {
   origin: `http://localhost:${port}`
 };
 
-function handleRequest(request, response) {
-  const {accept} = request.headers;
-  if (['application/x-capnp-schema-binary', 'application/*', '*/*'].indexOf(accept) === -1) {
-    response.writeHead(406, {'Content-Type': 'application/json'});
-    response.end(JSON.stringify({error: `Invalid accepts: ${accept}`}));
-    return;
-  }
-
-  const url = new URL(`${location.origin}${request.url}`);
-  compiler()
-    .then(executable => {
-      return compile(path.join(__dirname, 'fixtures', url.pathname), executable)
-        .then(schema => {
-          response.writeHead(200, {'Content-Type': 'application/x-capnp-schema-binary'});
-          response.end(Buffer.from(schema, 0, schema.length));
-        })
-        .catch(err => {
-          response.writeHead(500, {'Content-Type': 'application/json'});
-          response.end(JSON.stringify({error: `Failed to compile schema: ${err.message}`}));
-        });
-    }, err => {
-      response.writeHead(501, {'Content-Type': 'application/json'});
-      response.end(JSON.stringify({error: `Failed to find compiler: ${err}`}));
-    });
-}
-
 before(function(done) {
   this.port = port;
-  this.server = http.createServer(handleRequest);
+  const middleware = compile(path.join(__dirname, 'fixtures'));
+  this.server = http.createServer(middleware);
   this.server.listen(this.port, done);
 });
 
