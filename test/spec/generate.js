@@ -9,7 +9,7 @@ describe('generate', () => {
     });
   });
 
-  it('can download of a compiled schema file', () => {
+  it('can download a compiled schema file', () => {
     return fetchSchema('Id.capnp');
   });
 });
