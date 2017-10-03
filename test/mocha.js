@@ -33,14 +33,11 @@ function handleRequest(request, response) {
   if (['application/x-capnp-schema-binary', 'application/*', '*/*'].indexOf(accept) === -1) {
     response.writeHead(406, {'Content-Type': 'application/json'});
     response.end(JSON.stringify({error: `Invalid accepts: ${accept}`}));
+    return;
   }
 
   const url = new URL(`${location.origin}${request.url}`);
   compiler()
-    .catch(err => {
-      response.writeHead(501, {'Content-Type': 'application/json'});
-      response.end(JSON.stringify({error: `Failed to find compiler: ${err}`}));
-    })
     .then(executable => {
       return compile(path.join(__dirname, 'fixtures', url.pathname), executable)
         .then(schema => {
@@ -51,6 +48,9 @@ function handleRequest(request, response) {
           response.writeHead(500, {'Content-Type': 'application/json'});
           response.end(JSON.stringify({error: `Failed to compile schema: ${err.message}`}));
         });
+    }, err => {
+      response.writeHead(501, {'Content-Type': 'application/json'});
+      response.end(JSON.stringify({error: `Failed to find compiler: ${err}`}));
     });
 }
 
