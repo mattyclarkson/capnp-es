@@ -1,6 +1,6 @@
 {
   "globals": {
-    "should": false
+    "fetchSchema": false
   },
   "env": {
     "mocha": true

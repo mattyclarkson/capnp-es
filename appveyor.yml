@@ -14,10 +14,8 @@ install:
   - yarn --version
   - yarn install
 
-before_build:
-  - yarn lint
-
 build_script:
+  - yarn lint
   - yarn build
 
 test_script:
