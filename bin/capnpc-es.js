@@ -63,35 +63,50 @@ class Console {
   }
 }
 
-try {
-  const args = {};
+function stdin() {
+  const {stdin} = process;
+  stdin.resume();
+  const chunks = [];
+  return new Promise((resolve, reject) => {
+    stdin.on('data', chunk => chunks.push(chunk));
+    stdin.on('end', () => resolve(Buffer.concat(chunks, chunks.reduce((s, c) => s += c.length, 0)).buffer));
+    stdin.on('error', reject);
+  });
+}
 
-  const unparsed = process.argv.slice(2).filter(arg => {
-    switch (arg) {
-    case '--verbose': args.verbose = true; return false;
-    case '--help': help(); return false;
-    case '--version': version(); return false;
-    default: return true;
+stdin()
+  .then(buffer => {
+    const args = {};
+
+    const unparsed = process.argv.slice(2).filter(arg => {
+      switch (arg) {
+      case '--verbose': args.verbose = true; return false;
+      case '--help': help(); return false;
+      case '--version': version(); return false;
+      default: return true;
+      }
+    });
+
+    if (unparsed.length) {
+      throw new OptionsError(`Unknown arguments: ${unparsed.join(', ')}`);
+    }
+
+    const logger = new Logger({level: args.verbose ? INFO : WARN, console: new Console()});
+
+    const options = new Options({buffer, logger});
+
+    main(options);
+
+    process.exit(0);
+  })
+  .catch(err => {
+    if (err instanceof OptionsError) {
+      process.stderr.write(`${err.message}\n`);
+      process.exit(2);
+    } else {
+      process.stderr.write(`${err}\n`);
+      process.exit(1);
     }
   });
 
-  if (unparsed.length) {
-    throw new OptionsError(`Unknown arguments: ${unparsed.join(', ')}`);
-  }
 
-  const logger = new Logger({level: args.verbose ? INFO : WARN, console: new Console()});
-
-  const options = new Options({logger});
-
-  main(options);
-
-  process.exit(0);
-} catch (e) {
-  if (e instanceof OptionsError) {
-    process.stderr.write(`${e.message}\n`);
-    process.exit(2);
-  } else {
-    process.stderr.write(`${e}\n`);
-    process.exit(1);
-  }
-}
