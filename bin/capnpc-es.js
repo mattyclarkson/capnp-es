@@ -83,9 +83,9 @@ try {
 
   const options = new Options({logger});
 
-  const status = main(options);
+  main(options);
 
-  process.exit(status);
+  process.exit(0);
 } catch (e) {
   if (e instanceof OptionsError) {
     process.stderr.write(`${e.message}\n`);
