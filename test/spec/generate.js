@@ -1,4 +1,4 @@
-import '../../lib/generate.js';
+import generate from '../../lib/generate.js';
 
 describe('generate', () => {
   before(function() {
@@ -11,5 +11,13 @@ describe('generate', () => {
 
   it('can download a compiled schema file', () => {
     return fetchSchema('Id.capnp');
+  });
+
+  describe('primitives', () => {
+    it.only('can process a Int32 structure', () => {
+      return fetchSchema('Int32.capnp')
+        .then(schema => generate(schema))
+        .then(console.log);
+    });
   });
 });
