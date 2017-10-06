@@ -71,7 +71,10 @@ function stdin() {
   const chunks = [];
   return new Promise((resolve, reject) => {
     stdin.on('data', chunk => chunks.push(chunk));
-    stdin.on('end', () => resolve(Buffer.concat(chunks, chunks.reduce((s, c) => s += c.length, 0)).buffer));
+    stdin.on('end', () => {
+      const buffer = Buffer.concat(chunks, chunks.reduce((s, c) => s += c.length, 0));
+      resolve(buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength));
+    });
     stdin.on('error', reject);
   });
 }
