@@ -52,10 +52,11 @@
     "docs": "documentation serve lib/capnp-es.js",
     "docslint": "documentation lint lib/capnp-es.js",
     "eslint": "eslint bin lib test",
-    "mocha": "nyc mocha",
+    "mocha": "mocha",
+    "nyc": "nyc mocha",
     "lint": "yarn eslint && yarn docslint",
     "build": "yarn rollup",
-    "test": "yarn mocha",
+    "test": "yarn nyc",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "prepare": "yarn rollup"
   }
