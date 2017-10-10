@@ -4,6 +4,7 @@ module.exports = function(config) {
     files: [
       'test/spec/simple.js'
     ],
-    browsers: ['ChromeHeadless']
+    browsers: ['ChromeHeadless'],
+    reporters: ['mocha']
   });
 };
