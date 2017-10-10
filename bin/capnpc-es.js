@@ -73,14 +73,14 @@ function stdin() {
     stdin.on('data', chunk => chunks.push(chunk));
     stdin.on('end', () => {
       const buffer = Buffer.concat(chunks, chunks.reduce((s, c) => s += c.length, 0));
-      resolve(buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength));
+      resolve(new DataView(buffer.buffer, buffer.byteOffset, buffer.byteLength));
     });
     stdin.on('error', reject);
   });
 }
 
 stdin()
-  .then(buffer => {
+  .then(data => {
     const args = {};
 
     const unparsed = process.argv.slice(2).filter(arg => {
@@ -98,7 +98,7 @@ stdin()
 
     const logger = new Logger({level: args.verbose ? INFO : WARN, console: new Console()});
 
-    const ast = generate(buffer, logger);
+    const ast = generate(data, logger);
 
     logger.debug(ast);
 

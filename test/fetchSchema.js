@@ -29,7 +29,9 @@ export default async function(schema) {
     throw new FetchError(error, response);
   }
 
-  return await response.arrayBuffer();
+  const ab = await response.arrayBuffer();
+
+  return new DataView(ab);
 }
 
 
