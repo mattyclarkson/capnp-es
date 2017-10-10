@@ -61,7 +61,7 @@
     "nyc": "nyc mocha",
     "lint": "yarn eslint && yarn docslint",
     "build": "yarn rollup",
-    "test": "yarn nyc",
+    "test": "yarn nyc && yarn karma",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "prepare": "yarn rollup"
   }
