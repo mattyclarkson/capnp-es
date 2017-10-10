@@ -8,6 +8,11 @@ node_js:
   - "node"
   - "lts/*"
 
+dist: trusty
+
+addons:
+  chrome: beta
+
 cache: yarn
 
 script:
