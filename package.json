@@ -51,7 +51,7 @@
     "rollup": "yarn rollup-binary && yarn rollup-library",
     "docs": "documentation serve lib/capnp-es.js",
     "docslint": "documentation lint lib/capnp-es.js",
-    "eslint": "eslint bin lib test",
+    "eslint": "eslint bin lib test *.js",
     "mocha": "mocha",
     "nyc": "nyc mocha",
     "lint": "yarn eslint && yarn docslint",

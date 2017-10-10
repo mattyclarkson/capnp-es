@@ -33,7 +33,7 @@ export default {
     })
   ],
   external: [
-      'fs',
-      'path'
+    'fs',
+    'path'
   ]
 };
