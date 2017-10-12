@@ -51,9 +51,9 @@
   "scripts": {
     "distclean": "git clean -xfd",
     "clean": "git clean -xfde node_modules",
-    "rollup-binary": "rollup -c rollup.binary.config.js",
-    "rollup-library": "rollup -c rollup.library.config.js",
-    "rollup": "yarn rollup-binary && yarn rollup-library",
+    "rollup:binary": "rollup -c rollup.binary.config.js",
+    "rollup:library": "rollup -c rollup.library.config.js",
+    "rollup": "yarn rollup:binary && yarn rollup:library",
     "docs": "documentation serve lib/capnp-es.js",
     "docslint": "documentation lint lib/capnp-es.js",
     "eslint": "eslint bin lib test *.js",
