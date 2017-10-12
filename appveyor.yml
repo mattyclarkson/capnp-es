@@ -14,12 +14,8 @@ install:
   - yarn --version
   - yarn install
 
-build_script:
-  - yarn lint
-  - yarn build
-
 test_script:
-  - yarn test
+  - yarn ci
 
 on_success:
   - yarn coverage

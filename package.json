@@ -64,6 +64,7 @@
     "build": "yarn rollup",
     "test": "yarn nyc && yarn karma",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "prepare": "yarn rollup"
+    "prepare": "yarn rollup",
+    "ci": "yarn build && yarn lint && yarn test"
   }
 }
